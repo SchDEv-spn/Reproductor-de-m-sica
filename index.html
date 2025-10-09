@@ -4,264 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor de Música</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-color: #ffffff;
-            color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .music-player {
-            width: 100%;
-            max-width: 400px;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .now-playing {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            color: #000000;
-        }
-        
-        .song-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #000000;
-        }
-        
-        .artist {
-            font-size: 18px;
-            font-weight: 400;
-            margin-bottom: 40px;
-            color: #000000;
-        }
-        
-        .album-cover {
-            width: 250px;
-            height: 250px;
-            margin: 0 auto 40px;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000000;
-            font-size: 16px;
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 5px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background-color: #000000;
-            border-radius: 5px;
-            width: 30%;
-        }
-        
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #000000;
-            margin-bottom: 30px;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-        
-        .control-btn {
-            background: none;
-            border: none;
-            color: #000000;
-            font-size: 24px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .control-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .play-btn {
-            background-color: #000000;
-            color: #ffffff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-        
-        .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .volume-slider {
-            width: 100px;
-            height: 4px;
-            background-color: #e0e0e0;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-        
-        .volume-level {
-            height: 100%;
-            background-color: #000000;
-            border-radius: 2px;
-            width: 70%;
-        }
-        
-        @media (max-width: 480px) {
-            .music-player {
-                padding: 20px;
-            }
-            
-            .album-cover {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .controls {
-                gap: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="music-player">
-        <div class="now-playing">Now Playing</div>
-        <div class="song-title">Unsayable</div>
-        <div class="artist">Brambles</div>
-        
-        <div class="album-cover">
-            Álbum Cover
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-        
-        <div class="time-info">
-            <span class="current-time">1:45</span>
-            <span class="total-time">4:30</span>
-        </div>
-        
-        <div class="controls">
-            <button class="control-btn">⏮</button>
-            <button class="control-btn play-btn">▶</button>
-            <button class="control-btn">⏭</button>
-        </div>
-        
-        <div class="volume-container">
-            <span class="control-btn">🔊</span>
-            <div class="volume-slider">
-                <div class="volume-level"></div>
+    <input type="radio" id="view-player" name="view" checked class="view-radio">
+    <input type="radio" id="view-playlist" name="view" class="view-radio">
+    
+    <!-- Vista del Reproductor Principal -->
+    <div class="player-view">
+        <div class="music-player">
+            <!-- Header -->
+            <div class="player-header">
+                <div class="now-playing">Now Playing</div>
+                <label for="view-playlist" class="playlist-btn">🎵 All Songs</label>
+            </div>
+
+            <!-- Información de la canción actual -->
+            <div class="song-display">
+                <div class="song-title">Unsayable</div>
+                <div class="artist">Brambles</div>
+            </div>
+            
+            <!-- Portada del álbum -->
+            <div class="album-display">
+                <div class="album-cover">
+                    <img src="img/Gemini_Generated_Image_x52lqxx52lqxx52l.png" alt="Unsayable" class="album-image">
+                    <div class="album-placeholder">Álbum Cover</div>
+                </div>
+            </div>
+            
+            <!-- Barra de progreso -->
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            
+            <!-- Tiempo -->
+            <div class="time-info">
+                <span class="current-time">1:45</span>
+                <span class="total-time">4:30</span>
+            </div>
+            
+            <!-- Controles -->
+            <div class="controls">
+                <button class="control-btn shuffle-btn">🔀</button>
+                <button class="control-btn prev-btn">⏮</button>
+                <button class="control-btn play-btn">▶</button>
+                <button class="control-btn next-btn">⏭</button>
+                <button class="control-btn repeat-btn">🔁</button>
+            </div>
+            
+            <!-- Volumen -->
+            <div class="volume-container">
+                <span class="control-btn volume-icon">🔊</span>
+                <div class="volume-slider">
+                    <div class="volume-level"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Funcionalidad básica del reproductor
-        document.addEventListener('DOMContentLoaded', function() {
-            const playBtn = document.querySelector('.play-btn');
-            const progressBar = document.querySelector('.progress-bar');
-            const progressContainer = document.querySelector('.progress-container');
-            const currentTimeEl = document.querySelector('.current-time');
-            const totalTimeEl = document.querySelector('.total-time');
+    <!-- Vista de Playlist - Mismo diseño que el reproductor -->
+    <div class="playlist-view">
+        <div class="music-player playlist-mode">
+            <!-- Header -->
+            <div class="player-header">
+                <label for="view-player" class="back-btn">← Back</label>
+                <div class="now-playing">Playlist</div>
+                <div class="songs-count">6 songs</div>
+            </div>
+
+            <!-- Lista de canciones en lugar de la portada -->
+            <div class="playlist-container">
+                <div class="songs-list">
+                    <!-- Canción 1 - Actual -->
+                    <div class="song-item active">
+                        <div class="song-number">1</div>
+                        <img src="img/Gemini_Generated_Image_x52lqxx52lqxx52l.png" alt="Unsayable" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Unsayable</div>
+                            <div class="song-artist">Brambles • 4:30</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+
+                    <!-- Canción 2 -->
+                    <div class="song-item">
+                        <div class="song-number">2</div>
+                        <img src="img/album2.jpg" alt="Memoria" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Memoria</div>
+                            <div class="song-artist">Brambles • 3:45</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+
+                    <!-- Canción 3 -->
+                    <div class="song-item">
+                        <div class="song-number">3</div>
+                        <img src="img/album3.jpg" alt="Deep Forest" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Deep Forest</div>
+                            <div class="song-artist">Brambles • 5:20</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+
+                    <!-- Canción 4 -->
+                    <div class="song-item">
+                        <div class="song-number">4</div>
+                        <img src="img/album4.jpg" alt="Silent Echo" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Silent Echo</div>
+                            <div class="song-artist">Brambles • 4:15</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+
+                    <!-- Canción 5 -->
+                    <div class="song-item">
+                        <div class="song-number">5</div>
+                        <img src="img/album5.jpg" alt="Morning Light" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Morning Light</div>
+                            <div class="song-artist">Brambles • 3:55</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+
+                    <!-- Canción 6 -->
+                    <div class="song-item">
+                        <div class="song-number">6</div>
+                        <img src="img/album6.jpg" alt="Ocean Waves" class="song-thumb">
+                        <div class="song-info">
+                            <div class="song-name">Ocean Waves</div>
+                            <div class="song-artist">Brambles • 4:40</div>
+                        </div>
+                        <div class="now-playing-indicator">▶</div>
+                    </div>
+                </div>
+            </div>
             
-            let isPlaying = false;
+            <!-- Barra de progreso (igual que en el reproductor) -->
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
             
-            // Simular tiempos de la canción
-            let currentTime = 105; // 1:45 en segundos
-            let totalTime = 270; // 4:30 en segundos
+            <!-- Tiempo (igual que en el reproductor) -->
+            <div class="time-info">
+                <span class="current-time">1:45</span>
+                <span class="total-time">4:30</span>
+            </div>
             
-            // Actualizar tiempo actual y total
-            function updateTimeDisplay() {
-                const currentMinutes = Math.floor(currentTime / 60);
-                const currentSeconds = Math.floor(currentTime % 60);
-                const totalMinutes = Math.floor(totalTime / 60);
-                const totalSeconds = Math.floor(totalTime % 60);
-                
-                currentTimeEl.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
-                totalTimeEl.textContent = `${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
-                
-                // Actualizar barra de progreso
-                const progressPercent = (currentTime / totalTime) * 100;
-                progressBar.style.width = `${progressPercent}%`;
-            }
+            <!-- Controles (igual que en el reproductor) -->
+            <div class="controls">
+                <button class="control-btn shuffle-btn">🔀</button>
+                <button class="control-btn prev-btn">⏮</button>
+                <button class="control-btn play-btn">▶</button>
+                <button class="control-btn next-btn">⏭</button>
+                <button class="control-btn repeat-btn">🔁</button>
+            </div>
             
-            // Función para reproducir/pausar
-            function togglePlay() {
-                isPlaying = !isPlaying;
-                playBtn.textContent = isPlaying ? '❚❚' : '▶';
-                
-                if (isPlaying) {
-                    // Simular avance de la canción
-                    const interval = setInterval(() => {
-                        if (isPlaying && currentTime < totalTime) {
-                            currentTime += 1;
-                            updateTimeDisplay();
-                        } else {
-                            clearInterval(interval);
-                            isPlaying = false;
-                            playBtn.textContent = '▶';
-                        }
-                    }, 1000);
-                }
-            }
-            
-            // Función para cambiar el progreso al hacer clic en la barra
-            function setProgress(e) {
-                const width = this.clientWidth;
-                const clickX = e.offsetX;
-                const duration = totalTime;
-                
-                currentTime = (clickX / width) * duration;
-                updateTimeDisplay();
-            }
-            
-            // Event listeners
-            playBtn.addEventListener('click', togglePlay);
-            progressContainer.addEventListener('click', setProgress);
-            
-            // Inicializar tiempos
-            updateTimeDisplay();
-        });
-    </script>
+            <!-- Volumen (igual que en el reproductor) -->
+            <div class="volume-container">
+                <span class="control-btn volume-icon">🔊</span>
+                <div class="volume-slider">
+                    <div class="volume-level"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
