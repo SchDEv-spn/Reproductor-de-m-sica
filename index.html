@@ -1,177 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor de Música</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <input type="radio" id="view-player" name="view" checked class="view-radio">
     <input type="radio" id="view-playlist" name="view" class="view-radio">
-    
+
     <!-- Vista del Reproductor Principal -->
     <div class="player-view">
         <div class="music-player">
             <!-- Header -->
             <div class="player-header">
-                <div class="now-playing">Now Playing</div>
-                <label for="view-playlist" class="playlist-btn">🎵 All Songs</label>
+                <div class="now-playing">Reproduciendo</div>
+                <label for="view-playlist" class="playlist-btn">🎵 Todas las canciones</label>
             </div>
 
             <!-- Información de la canción actual -->
             <div class="song-display">
-                <div class="song-title">Unsayable</div>
-                <div class="artist">Brambles</div>
+                <div id="current-song-title" class="song-title">Ni rico ni pobre</div>
+                <div id="current-artist" class="artist">Flyper ft Nizz</div>
             </div>
-            
+
             <!-- Portada del álbum -->
             <div class="album-display">
                 <div class="album-cover">
-                    <img src="img/Gemini_Generated_Image_x52lqxx52lqxx52l.png" alt="Unsayable" class="album-image">
-                    <div class="album-placeholder">Álbum Cover</div>
+                    <img id="current-album-cover" src="img/ni rico ni pobre.jpg" alt="Unsayable" class="album-image">
                 </div>
             </div>
-            
+
             <!-- Barra de progreso -->
             <div class="progress-container">
-                <div class="progress-bar"></div>
+                <div id="progress-bar" class="progress-bar"></div>
             </div>
-            
+
             <!-- Tiempo -->
             <div class="time-info">
-                <span class="current-time">1:45</span>
-                <span class="total-time">4:30</span>
+                <span id="current-time" class="current-time">0:00</span>
+                <span id="total-time" class="total-time">0:00</span>
             </div>
-            
+
             <!-- Controles -->
             <div class="controls">
-                <button class="control-btn shuffle-btn">🔀</button>
-                <button class="control-btn prev-btn">⏮</button>
-                <button class="control-btn play-btn">▶</button>
-                <button class="control-btn next-btn">⏭</button>
-                <button class="control-btn repeat-btn">🔁</button>
+                <button id="shuffle-btn" class="control-btn shuffle-btn">
+                    <i class="bi bi-shuffle"></i>
+                </button>
+                <button id="prev-btn" class="control-btn prev-btn">
+                    <i class="bi bi-skip-start-fill"></i>
+                </button>
+                <button id="play-btn" class="control-btn play-btn">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button id="next-btn" class="control-btn next-btn">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
+                <button id="repeat-btn" class="control-btn repeat-btn">
+                    <i class="bi bi-arrow-repeat"></i>
+                </button>
             </div>
-            
+
             <!-- Volumen -->
             <div class="volume-container">
                 <span class="control-btn volume-icon">🔊</span>
                 <div class="volume-slider">
-                    <div class="volume-level"></div>
+                    <div id="volume-level" class="volume-level"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Vista de Playlist - Mismo diseño que el reproductor -->
+    <!-- Vista de Playlist -->
     <div class="playlist-view">
         <div class="music-player playlist-mode">
             <!-- Header -->
             <div class="player-header">
-                <label for="view-player" class="back-btn">← Back</label>
+                <label for="view-player" class="back-btn">← Volver</label>
                 <div class="now-playing">Playlist</div>
-                <div class="songs-count">6 songs</div>
+                <div id="songs-count" class="songs-count">0 canciones</div>
             </div>
 
-            <!-- Lista de canciones en lugar de la portada -->
+            <!-- Lista de canciones -->
             <div class="playlist-container">
-                <div class="songs-list">
-                    <!-- Canción 1 - Actual -->
-                    <div class="song-item active">
-                        <div class="song-number">1</div>
-                        <img src="img/Gemini_Generated_Image_x52lqxx52lqxx52l.png" alt="Unsayable" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Unsayable</div>
-                            <div class="song-artist">Brambles • 4:30</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
-
-                    <!-- Canción 2 -->
-                    <div class="song-item">
-                        <div class="song-number">2</div>
-                        <img src="img/album2.jpg" alt="Memoria" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Memoria</div>
-                            <div class="song-artist">Brambles • 3:45</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
-
-                    <!-- Canción 3 -->
-                    <div class="song-item">
-                        <div class="song-number">3</div>
-                        <img src="img/album3.jpg" alt="Deep Forest" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Deep Forest</div>
-                            <div class="song-artist">Brambles • 5:20</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
-
-                    <!-- Canción 4 -->
-                    <div class="song-item">
-                        <div class="song-number">4</div>
-                        <img src="img/album4.jpg" alt="Silent Echo" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Silent Echo</div>
-                            <div class="song-artist">Brambles • 4:15</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
-
-                    <!-- Canción 5 -->
-                    <div class="song-item">
-                        <div class="song-number">5</div>
-                        <img src="img/album5.jpg" alt="Morning Light" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Morning Light</div>
-                            <div class="song-artist">Brambles • 3:55</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
-
-                    <!-- Canción 6 -->
-                    <div class="song-item">
-                        <div class="song-number">6</div>
-                        <img src="img/album6.jpg" alt="Ocean Waves" class="song-thumb">
-                        <div class="song-info">
-                            <div class="song-name">Ocean Waves</div>
-                            <div class="song-artist">Brambles • 4:40</div>
-                        </div>
-                        <div class="now-playing-indicator">▶</div>
-                    </div>
+                <div id="songs-list" class="songs-list">
+                    <!-- Las canciones se cargarán dinámicamente aquí -->
                 </div>
             </div>
-            
-            <!-- Barra de progreso (igual que en el reproductor) -->
+
+            <!-- Barra de progreso -->
             <div class="progress-container">
-                <div class="progress-bar"></div>
+                <div id="playlist-progress-bar" class="progress-bar"></div>
             </div>
-            
-            <!-- Tiempo (igual que en el reproductor) -->
+
+            <!-- Tiempo -->
             <div class="time-info">
-                <span class="current-time">1:45</span>
-                <span class="total-time">4:30</span>
+                <span id="playlist-current-time" class="current-time">0:00</span>
+                <span id="playlist-total-time" class="total-time">0:00</span>
             </div>
-            
-            <!-- Controles (igual que en el reproductor) -->
+
+            <!-- Controles  apra las canciones-->
             <div class="controls">
-                <button class="control-btn shuffle-btn">🔀</button>
-                <button class="control-btn prev-btn">⏮</button>
-                <button class="control-btn play-btn">▶</button>
-                <button class="control-btn next-btn">⏭</button>
-                <button class="control-btn repeat-btn">🔁</button>
+                <button id="playlist-shuffle-btn" class="control-btn shuffle-btn">
+                    <i class="bi bi-shuffle"></i>
+                </button>
+                <button id="playlist-prev-btn" class="control-btn prev-btn">
+                    <i class="bi bi-skip-start-fill"></i>
+                </button>
+                <button id="playlist-play-btn" class="control-btn play-btn">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button id="playlist-next-btn" class="control-btn next-btn">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
+                <button id="playlist-repeat-btn" class="control-btn repeat-btn">
+                    <i class="bi bi-arrow-repeat"></i>
+                </button>
             </div>
-            
-            <!-- Volumen (igual que en el reproductor) -->
+
+            <!-- barra para el volumen -->
             <div class="volume-container">
                 <span class="control-btn volume-icon">🔊</span>
                 <div class="volume-slider">
-                    <div class="volume-level"></div>
+                    <div id="playlist-volume-level" class="volume-level"></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Elemento de audio -->
+    <audio id="audio-player"></audio>
+
+    <script src="js/music-player.js"></script>
 </body>
+
 </html>
