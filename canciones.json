@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "titulo": "Ni rico ni pobre",
+    "artista": "Flyper ft Nizz",
+    "album": "Single",
+    "genero": "Reggaeton",
+    "anio": 2023,
+    "archivo": "canciones/ni-rico-ni-pobre.mp3",
+    "portada": "img/ni rico ni pobre.jpg",
+    "duracion": "3:45"
+  },
+  {
+    "id": 2,
+    "titulo": "Another Love",
+    "artista": "Tom Odell",
+    "album": "Long Way Down",
+    "genero": "Pop",
+    "anio": 2013,
+    "archivo": "canciones/another-love.mp3",
+    "portada": "img/another love.jpg",
+    "duracion": "4:30"
+  },
+  {
+    "id": 3,
+    "titulo": "No Tiene La Culpa",
+    "artista": "Artista Desconocido",
+    "album": "Single",
+    "genero": "Reggaeton",
+    "anio": 2023,
+    "archivo": "canciones/no-tiene-la-culpa.mp3",
+    "portada": "img/no tiene la culpa.jpeg",
+    "duracion": "3:20"
+  }
+]
