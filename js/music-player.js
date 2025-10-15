@@ -179,3 +179,7 @@ document.querySelectorAll('.progress-container').forEach(container => {
     });
 });
 
+// Cuando termina la canción
+audioPlayer.addEventListener('ended', () => {
+    nextBtn.click();
+});

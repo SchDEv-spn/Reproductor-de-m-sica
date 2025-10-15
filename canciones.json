@@ -17,7 +17,7 @@
     "album": "Long Way Down",
     "genero": "Pop",
     "anio": 2013,
-    "archivo": "canciones/another-love.mp3",
+    "archivo": "canciones/another-love.mp4",
     "portada": "img/another love.jpg",
     "duracion": "4:30"
   },
@@ -28,7 +28,7 @@
     "album": "Single",
     "genero": "Reggaeton",
     "anio": 2023,
-    "archivo": "canciones/no-tiene-la-culpa.mp3",
+    "archivo": "canciones/no-tiene-la-culpa.mp4",
     "portada": "img/no tiene la culpa.jpeg",
     "duracion": "3:20"
   }
